@@ -15,7 +15,7 @@ class Predators {
     }
  
     func decodeApexPredatorData() {
-        // JSONファイルのURLを取得（nil出ない場合にurlに代入される）
+        // JSONファイルのURLを取得（nilでない場合にurlに代入される）
         if let url = Bundle.main.url(forResource: "jpapexpredators", withExtension: "json") {
             do {
                 // リソースファイルからDataオブジェクトを作成（実際のデータを読み込む）
