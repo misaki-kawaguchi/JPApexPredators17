@@ -11,9 +11,20 @@ struct ContentView: View {
     let predators = Predators()
     @State var searchText = ""
     
+    var filteredDinos: [ApexPredator] {
+        if searchText.isEmpty {
+            return predators.apexPredators
+        } else {
+            return predators.apexPredators.filter {
+                predetor in
+                predetor.name.localizedStandardContains(searchText)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
-            List(predators.apexPredators) { predator in
+            List(filteredDinos) { predator in
                 NavigationLink {
                     Image(predator.image)
                         .resizable()
