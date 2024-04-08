@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     let predators = Predators()
+    @State var searchText = ""
     
     var body: some View {
         NavigationStack {
@@ -44,6 +45,8 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Apex Predators")
+            .searchable(text: $searchText)
+            .autocorrectionDisabled()
         }
         .preferredColorScheme(.dark)
     }
