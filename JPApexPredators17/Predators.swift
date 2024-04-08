@@ -8,6 +8,7 @@
 import Foundation
 
 class Predators {
+    var allApexPredators: [ApexPredator] = []
     var apexPredators: [ApexPredator] = []
     
     init() {
@@ -25,7 +26,8 @@ class Predators {
                 // JSONのキーがスネークケースの場合、それをキャメルケースに自動的に変換する
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 // 読み込んだデータを[ApexPredator]型のオブジェクト配列にデコードする
-                apexPredators = try decoder.decode([ApexPredator].self, from: data)
+                allApexPredators = try decoder.decode([ApexPredator].self, from: data)
+                apexPredators = allApexPredators
             } catch {
                 // エラー（ファイルが見つからない、デコードに失敗した等）が発生した場合catchブロックが実行される
                 print("Error decoding JSON data: \(error)")
@@ -50,6 +52,16 @@ class Predators {
                 predator1.name < predator2.name
             } else {
                 predator1.id < predator2.id
+            }
+        }
+    }
+    
+    func filter(by type: PredatorType) {
+        if type == .all {
+            apexPredators = allApexPredators
+        } else {
+            apexPredators = allApexPredators.filter { predator in
+                predator.type == type
             }
         }
     }
