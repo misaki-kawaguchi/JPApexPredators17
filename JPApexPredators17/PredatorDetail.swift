@@ -103,6 +103,8 @@ struct PredatorDetail: View {
 }
 
 #Preview {
-    PredatorDetail(preddator: Predators().apexPredators[10], position: .camera(MapCamera(centerCoordinate: Predators().apexPredators[2].location, distance: 30000)))
-    //        .preferredColorScheme(.dark)
+    NavigationStack {
+        PredatorDetail(preddator: Predators().apexPredators[10], position: .camera(MapCamera(centerCoordinate: Predators().apexPredators[2].location, distance: 30000)))
+            .preferredColorScheme(.dark)
+    }
 }
