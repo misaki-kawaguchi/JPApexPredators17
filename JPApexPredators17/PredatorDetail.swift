@@ -46,6 +46,8 @@ struct PredatorDetail: View {
                     // Current location
                     NavigationLink {
                         Image(preddator.image)
+                            .resizable()
+                            .scaledToFit()
                     } label: {
                         Map(position: $position) {
                             Annotation(preddator.name, coordinate: preddator.location) {
